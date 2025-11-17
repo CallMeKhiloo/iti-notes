@@ -1,0 +1,23 @@
+1. ls /usr/bin > /tmp/commands.list
+2. cat /tmp/commands.list | wc -l
+3. cut -f 1 -d : /etc/passwd | grep ^g
+4. cut -f1,5 -d : /etc/passwd | grep ^g
+5. cut -f1,5 -d : /etc/passwd | grep ^g | sort -t : -k2 > file
+6. 
+	6.1 ls -R / | grep .bash_profile
+7. users | wc -w
+8. cat -n /etc/passwd | head -n 10 | tail -4
+9. 
+	9.1 it will show only "filename2"
+	9.2 it won't execute as "rm" needs arguments
+	9.3 it will show the number of lines inside the file
+10. sleep 100
+11. use ctrl+z
+12. bg %1
+13. jobs
+14. fg %1, then stop the process using ctrl+z, bg %1
+15. kill -9 4420
+16. ps
+17. pgrep -vu
+18. ps -u 1000
+19. kill -9 -1

@@ -1,0 +1,24 @@
+1. installed CENTOS
+2. cat -> shows the whole file on the terminal
+more -> shows the file on pages
+
+3. rm -> remove files or directories
+rmdir -> remove empty directories
+
+4. cd; mkdir docs; touch mycv
+cd; mkdir dir1; cd dir1; mkdir dir11 dir12;cd dir11; touch file1
+	a. rm -r dir11; if i have used rmdir this won't work as rmdir only removes empty directories while rm -r removes the directory with all it's subfiles and subdirectories
+	b. "rmdir -p dir1/dir12" will remove "dir12" and it's contents
+	c. absolute -> /home/user/docs/mycv , relative -> docs/mycv
+
+7. cd, cd ~, cd /home/user/, cd ../../home/user/
+
+9. head -n 4 /etc/passwd
+
+10. tail -n 7 /etc/passwd
+
+11. man -a passwd
+
+12. man -s 5 passwd
+
+13. man -k passwd

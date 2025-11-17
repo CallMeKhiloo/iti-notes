@@ -1,0 +1,30 @@
+# --- Variables ---
+# The C++ compiler
+CXX = g++
+
+# Compiler flags: turn on warnings (-Wall) and specify C++ standard
+CXXFLAGS = -Wall -std=c++17
+
+# Name of the final program
+TARGET = program
+
+# Name of the main source file
+SOURCE = main.cpp
+
+# --- Rules ---
+
+# 1. Default Rule (The 'all' rule)
+# When you type 'make', this rule runs.
+# It depends on the TARGET being built.
+all: $(TARGET)
+
+# 2. Build Rule
+# How to create the 'program' executable from 'main.cpp'
+$(TARGET): $(SOURCE)
+	$(CXX) $(CXXFLAGS) $(SOURCE) -o $(TARGET)
+
+# 3. Clean Rule
+# Rule to remove the generated executable file
+.PHONY: clean
+clean:
+	rm -f $(TARGET)

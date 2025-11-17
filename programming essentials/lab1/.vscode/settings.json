@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "7-delete": "plaintext",
+    "stdio.h": "cpp",
+    "terminal_utils.h": "cpp",
+    "iostream": "cpp"
+  },
+  "c-cpp-compile-run.c.compiler": "/usr/bin/g++",
+  "c-cpp-compile-run.c.compileCommand": "g++ *.cpp -o program",
+  "c-cpp-compile-run.c.runCommand": "gnome-terminal -- bash -c './program; echo; echo Press any key to exit...; read -n 1'",
+  "c-cpp-compile-run.runInExternalTerminal": true,
+  "c-cpp-compile-run.runInIntegratedTerminal": false
+}

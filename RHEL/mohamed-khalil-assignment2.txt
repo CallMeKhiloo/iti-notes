@@ -1,0 +1,28 @@
+1. sudo useradd -c "Islam Askar" islam; passwd islam
+2. sudo useradd -c "Bad User" baduser; passwd baduser
+3. groupadd -g 30000 pgroup
+4. groupadd badgroup
+5. sudo usermod -G pgroup islam
+6. passwd islam
+7. sudo chage -M 30 islam
+8. passwd -l islam
+9. sudo userdel -r baduser
+10. sudo groupdel badgroup
+13. mkdir ~/myteam; chmod u=r myteam;
+14. su - islam
+15. cd home/mo-khalil/myteam/; will give permissions denied because the folder created is inside the home directory of the other user which we don't have execute access on his home dir
+16. 
+	16.1 chmod ug=w,u+r,go+x oldpasswd, chmod 631 oldpasswd
+	16.2 umask 146
+	16.3 read and write for a file, read+write+execute for a folder
+	16.4 umask 777
+17. 
+	17.1 source -> read + execute , target -> write + execute
+	17.2 source -> read, target -> write + execute
+	17.3 write
+	17.4 execute
+	17.5 read
+	17.6 read
+	17.7 write
+18. touch file; chmod 444 file. you can't edit it but if you tried to remove it this message will appear "remove write-protected regular empty file?" and if you typed 'y' it will remove it
+19. for a file it makes the file executable, but for a directory it makes you able to enter the dir

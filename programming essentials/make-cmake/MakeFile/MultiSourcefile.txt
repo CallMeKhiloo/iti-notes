@@ -1,0 +1,41 @@
+# --- Configuration Variables ---
+CXX = g++
+CXXFLAGS = -Wall -std=c++17 -g
+LDFLAGS = 
+
+# Name of the final executable file
+TARGET = my_app
+
+# Automatically find all C++ source files (.cpp) in the current directory
+SOURCES = $(wildcard *.cpp)
+
+# Automatically generate the list of required object files (.o)
+# For every file in SOURCES (e.g., main.cpp), replace .cpp with .o (e.g., main.o)
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# --- Rules ---
+
+# 1. The Default/Main Target
+# The TARGET depends on ALL of the OBJECTS.
+$(TARGET): $(OBJECTS)
+	@echo "Linking $(TARGET)..."
+	$(CXX) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+
+# 2. Pattern Rule for Object Files (.cpp to .o)
+# This rule applies to every file matching the pattern %.o (any .o file).
+# It tells make how to build an object file from its corresponding source file.
+# $< = the source file (e.g., main.cpp)
+# $@ = the target file (e.g., main.o)
+%.o: %.cpp
+	@echo "Compiling $<..."
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# 3. Clean Rule
+# Removes all generated files
+.PHONY: clean
+clean:
+	@echo "Cleaning project..."
+	rm -f $(TARGET) $(OBJECTS)
+
+.PHONY: all
+all: $(TARGET)

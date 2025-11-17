@@ -1,0 +1,17 @@
+1. touch mycv; vim mycv;
+2. 
+	2.1 j
+	2.2 k
+	2.3 /age
+	2.4 :5
+	2.5 dd5d
+	2.6 A
+3. cat /etc/shells
+4. env
+5. man bash
+6. printenv
+7. echo $0
+8. sh -> ~/.profile, ksh -> ~/.kshrc, bash -> ~/.bashrc
+9. add "date" and change the PS1 env var in the .bashrc or .profile in your home dir
+10. "echo \" doesn't do anything it just enters a new line waiting for the rest of the command, this ">" prompt is the secondary prompt from $PS2 env var, if we want to change it to ":" then we should change the $PS2 env var inside either .bashrc or .profile
+11. alias ls="ls -l"
