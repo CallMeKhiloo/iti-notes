@@ -15,7 +15,7 @@ Students_Tel[ #student_id(FK), #tel]
 
 Students_Subject[#student_id(FK), #subject(FK), Grade]   جدول مواد الطلاب   - attribute on relationship ( grade)
 Subjects[#subject, subject_desc, no_books, no_pages]  جدول المواد
-
+ 
 -----------------------------------
 > 3nf{ Transitive [ Fake dependency ] :> Attribute depend on a NON PK. Key Attribute }
 Students[#student_id, name, city, zone, level(FK)]
