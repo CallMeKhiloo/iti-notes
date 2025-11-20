@@ -29,18 +29,33 @@ void to_capital(char arr[]){
 }
 
 int str_cmp(char str1[], char str2[]){
+    if (str_len(str1) != str_len(str2)) return str_len(str1) < str_len(str2)? 1:2;
     int i = 0;
-    while (str1[i] != '\0' && str2[i] != '\0'){
-        if(tolower(str1[i]) < tolower(str2[i])) return 1;
-        else if (tolower(str1[i]) > tolower(str2[i])) return 2;
+    while(str1[i] != '\0'){
+        if(str1[i] != str2[i]) return -1;
         i++;
     }
-    if(str1[i] == '\0' && str2[i] == '\0') return 0;
-    return str1[i] == '\0' ? 1:2;
+    return 0;
 }
 
-void strcpy (char str1[], char str2[]){
-    
+bool str_cpy (char str1[], char str2[], int str1_size){
+    if(str_len(str2) >= str1_size) return 0;
+    int i = 0;
+    while (str2[i] != '\0'){
+        str1[i] = str2[i];
+        i++;
+    }
+    str1[i] = str2[i];
+    return 1;
 }
 
-int str_concat(char str1[], char str2[], )
+bool str_concat (char str1[], char str2[], int str1_size){
+    if( (str_len(str1) + str_len(str2)) >= str1_size ) return 0;
+    int i = 0, str1_length = str_len(str1);
+    while(str2[i] != '\0'){
+        str1[i + str1_length] = str2[i];
+        i++;
+    }
+    str1[i + str1_length] = str2[i];
+    return 1;
+}
