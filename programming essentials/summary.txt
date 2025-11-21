@@ -1,0 +1,26 @@
+// Scope of Variables 
+   // Life Time of Variables 
+   // extern   ==> Global Variables 
+   // static ===> local ===> Life Time 
+             ===> Global /Func ===> Scope 
+
+   // Call By Value 
+   // Call By Address , Swap, Return Multi Value , Array 
+   // Pointers 
+   	- Operation Of Pointer  
+   	- Pointer of Char ===> integer 
+   	- Pointer to Array 1D 
+   	- Pointer to Pointer (can't Point to Static Array)
+   	- Const Pointer  & Pointer to Const 
+   	- string Array of Char , pointer to char (Readonly String)
+   	- Array of String 2D Array 
+   	- Array of Pointer vs Pointer to Array using with 2D 
+  	- Dangling , Wild , Null Pointer 
+  	- void Pointer ?? 
+  // Struct  	
+  	- Struct with typede
+  	- Struct inside Instruct
+  	- Pointer struct inside struct ==> Data structure 
+  	- Pointer to Struct 
+  	- Array of Struct 
+  	- How to Pass Struct , Array of Sturct to Function 

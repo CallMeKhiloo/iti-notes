@@ -16,5 +16,5 @@ int main()
     // to_lower(s1);
     // to_capital(s2);
     // cout << s1 << " " << s2 << '\n';
-    return 1;
+    return 0;
 }

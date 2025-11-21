@@ -5,7 +5,7 @@
 // #define int long int
 
 int main(){
-    unsigned char x = 255;
+    char x = 127;
     x+=2;
     printf("%i", x);
 }
