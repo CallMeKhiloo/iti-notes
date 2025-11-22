@@ -48,6 +48,7 @@
 #define KEY_END 70
 #define KEY_LEFT 68
 #define KEY_RIGHT 67
+#define KEY_BACKSPACE 127
 #endif
 
 void gotoxy(int x, int y);
@@ -63,5 +64,4 @@ void drawMenu(
 // ========= Navigation & Pages =========
 void showMenu();        // handles movement + calling drawMenu()
 void startPage(int id); // displays page after pressing Enter
-
 #endif

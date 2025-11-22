@@ -53,7 +53,7 @@ void startPage(int id)
     do
     {
         key = getKey();
-    } while (key != KEY_ESCAPE && key != KEY_HOME);
+    } while (key != KEY_ESCAPE && key != KEY_HOME && key != KEY_BACKSPACE);
 }
 
 // Main menu logic
