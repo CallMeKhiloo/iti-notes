@@ -29,3 +29,12 @@ void check_borders(int *r, int *c, int n)
     if (*c == n)
         *c = 0;
 }
+
+void clearScreen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
