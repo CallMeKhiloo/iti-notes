@@ -31,35 +31,82 @@ void create_employee()
     // --- Age input ---
     while (true)
     {
-        cout << "Enter the employee's age : ";
-        cin >> emp->age;
+        string line;
+        int age;
 
-        if (cin.fail() || emp->age <= 0)
+        cout << "Enter the employee's age : ";
+        getline(cin, line);
+
+        line.erase(0, line.find_first_not_of(" \t"));
+        line.erase(line.find_last_not_of(" \t") + 1);
+
+        bool valid = !line.empty();
+        for (char c : line)
         {
-            cout << "Invalid age. Please enter a number .\n";
-            cin.clear();                                                   // clear error flag
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard invalid input from the buffer
+            if (!isdigit(c))
+            {
+                valid = false;
+                break;
+            }
+        }
+
+        if (!valid)
+        {
+            cout << "Input must be ONLY a number.\n";
             continue;
         }
+
+        age = std::stoi(line);
+        if (age <= 0)
+        {
+            cout << "Invalid age. Please enter a number .\n";
+            continue;
+        }
+
+        emp->age = age;
         break;
     }
 
     // --- Salary input ---
     while (true)
     {
-        cout << "Enter the employee's salary (>0): ";
-        cin >> emp->salary;
+        string line;
+        int salary;
 
-        if (cin.fail() || emp->salary <= 0)
+        cout << "Enter the employee's salary (>0): ";
+        getline(cin, line);
+
+        line.erase(0, line.find_first_not_of(" \t"));
+        line.erase(line.find_last_not_of(" \t") + 1);
+
+        bool valid = !line.empty();
+        for (char c : line)
         {
-            cout << "Invalid salary. Please enter a positive number.\n";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            if (!isdigit(c))
+            {
+                valid = false;
+                break;
+            }
+        }
+
+        if (!valid)
+        {
+            cout << "Input must be ONLY a number.\n";
             continue;
         }
+
+        salary = std::stoi(line);
+        if (salary <= 0)
+        {
+            cout << "Invalid salary. Please enter a positive number.\n";
+            continue;
+        }
+
+        emp->salary = salary;
         break;
     }
 
+    clearScreen();
     cout << "Employee added successfully!\n";
     emp->next = NULL;
 }
