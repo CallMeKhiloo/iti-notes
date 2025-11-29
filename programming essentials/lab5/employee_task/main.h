@@ -2,8 +2,6 @@
 #define MAIN
 
 #include <iostream>
-#include <thread> // deal with threads in order to use it with timing functions
-#include <chrono> // to use time utilities
 #include <string>
 #include <cstring>
 #include <vector>
