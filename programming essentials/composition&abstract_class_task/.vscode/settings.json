@@ -1,7 +1,6 @@
 {
   "files.associations": {
     "7-delete": "plaintext",
-    "stdbool.h": "c",
     "iostream": "cpp"
   }
 }
