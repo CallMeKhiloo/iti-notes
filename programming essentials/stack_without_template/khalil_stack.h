@@ -12,11 +12,14 @@ private:
     int *arr;
 public:
     stack_clone();
+    stack_clone(const stack_clone& st);
 
+    stack_clone& operator=(const stack_clone& st);
     void push(int val);
     int pop();
     bool empty();
     int top();
+    int getSize();
 
     ~stack_clone();
 };

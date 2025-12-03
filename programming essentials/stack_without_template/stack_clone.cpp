@@ -7,6 +7,41 @@ stack_clone::stack_clone()
     this->size = 5;
 }
 
+// copy constructor
+stack_clone::stack_clone(const stack_clone &other)
+{
+    if(this == &other) return;
+    this->curr = other.curr;
+    this->size = other.size;
+    this->arr = new int[other.size];
+    for (int i = 0; i < other.curr; i++)
+    {
+        this->arr[i] = other.arr[i];
+    }
+}
+
+// assignment operator overloading
+stack_clone& stack_clone::operator=(const stack_clone &other)
+{
+    if (this == &other) return *this;
+    if (this->size < other.size)
+    {
+        this->size = other.size;
+        delete[] this->arr;
+        this->arr = new int[other.size];
+    }
+    this->curr = other.curr;
+    for (int i = 0; i < other.curr; i++)
+    {
+        this->arr[i] = other.arr[i];
+    }
+    return *this; // to enable chaining st1=st2=st3
+}
+
+int stack_clone::getSize(){
+    return this->size;
+}
+
 void stack_clone::push(int x)
 {
     if (this->curr < size)
