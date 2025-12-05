@@ -17,17 +17,7 @@ int main()
     // Scale factor to make small coordinates visible
     const int SCALE = 20;
 
-    // Original coordinates multiplied for reasonable visibility
-    Line lines[3] = {
-        Line(2 * SCALE, 4 * SCALE, 10 * SCALE, 20 * SCALE),
-        Line(1 * SCALE, 3 * SCALE, 5 * SCALE, 2 * SCALE),
-        Line(1 * SCALE, 5 * SCALE, 2 * SCALE, 20 * SCALE)};
-
-    Rect rectangles[1] = {Rect(0 * SCALE, 3 * SCALE, 5 * SCALE, 10 * SCALE)};
-
-    Circle circles[1] = {Circle(10 * SCALE, 10 * SCALE, 20 * SCALE)};
-
-    Picture pic(3, 1, 1, lines, rectangles, circles);
+    Shape *shapes[] = {new Line(1 * SCALE, 4 * SCALE, 2 * SCALE, 7 * SCALE), new Rect(1 * SCALE, 2 * SCALE, 5 * SCALE, 8 * SCALE), new Circle(5 * SCALE, 5 * SCALE, 3 * SCALE)};
 
     while (running)
     {
@@ -44,7 +34,9 @@ int main()
 
         // Draw shapes (white)
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        pic.draw(renderer);
+        for(int i = 0 ; i < 3; i++){
+            shapes[i]->draw(renderer);
+        }
 
         // Show everything
         SDL_RenderPresent(renderer);
@@ -53,5 +45,7 @@ int main()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+
+    for (int i = 0 ; i < 3 ; i++) free(shapes[i]);
     return 0;
 }
