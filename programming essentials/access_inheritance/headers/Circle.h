@@ -3,7 +3,7 @@
 
 #include "Geoshape.h"
 
-class Circle : public Geoshape
+class Circle : private Geoshape
 {
 public:
     Circle(float r);
