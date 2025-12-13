@@ -29,6 +29,10 @@ public class Dictionary {
         char key = Character.toUpperCase(word.charAt(0));
 
         mp.putIfAbsent(key, new TreeSet<>());
+        for (String x : mp.get(key)) {
+            if (x.toLowerCase().equals(word.toLowerCase()))
+                return;
+        }
         mp.get(key).add(word);
     }
 

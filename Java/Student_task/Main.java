@@ -168,7 +168,6 @@ public class Main {
                             System.out.println("invalid argument credit hours, Enter a valid number");
                         }
                     }
-                    sc.nextLine();
                     courses.add(new Course(cid, cname, credits));
                     System.out.println("Course added successfully!");
                     break;

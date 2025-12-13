@@ -66,7 +66,7 @@ public class Main {
         shapes.addAll(rectangles);
         shapes.addAll(circles);
 
-        Test.print_shapes(shapes);
+        Test.print_shapes(rectangles);
 
         sc.close();
     }

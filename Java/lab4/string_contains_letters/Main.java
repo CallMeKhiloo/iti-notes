@@ -10,7 +10,7 @@ public class Main {
                 isOnlyLetters(s) ? "String has only letters" : "String has other characters other than letters");
     }
 
-    public static boolean isOnlyLetters(String s) {
+    public static boolean isOnlyLetters(String s) { // i need to make another method instead of this
         for (char c : s.toCharArray()) {
             if (!Character.isLetter(c))
                 return false;
