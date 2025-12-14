@@ -7,6 +7,6 @@ public class Book extends LibraryItem {
 
     @Override
     public String[] getItemDetails() {
-        return new String[] { getId(), getTitle() };
+        return new String[] { getId(), getTitle(), String.valueOf(getAvailability()) };
     }
 }

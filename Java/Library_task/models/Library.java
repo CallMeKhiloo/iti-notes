@@ -12,22 +12,17 @@ public class Library<T extends LibraryItem> {
 
     public boolean addItem(T t) {
         String new_id = t.getItemDetails()[0];
-        for (T item : items) {
-            String curr_id = item.getItemDetails()[0];
-            if (curr_id.equals(new_id)) {
-                return false;
-            }
-        }
+        T item = items.stream().filter(x -> x.getId().equals(new_id)).findFirst().orElse(null);
+        if (item != null)
+            return false;
         return items.add(t);
     }
 
     public T retrieveItem(String id) {
-        for (T item : items) {
-            String x = item.getItemDetails()[0];
-            if (id.equals(x))
-                return item;
-        }
-        throw new ItemNotFoundException("The id Is not found");
+        T item = items.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
+        if (item == null)
+            throw new ItemNotFoundException("The id Is not found");
+        return item;
     }
 
     public void updateItemTitle(String id, String title) {
@@ -43,7 +38,8 @@ public class Library<T extends LibraryItem> {
     public void displayItems() {
         for (T item : items) {
             String[] tokens = item.getItemDetails();
-            System.out.println("This item has id: " + tokens[0] + " and title: " + tokens[1]);
+            String availability = tokens[2] == "true" ? " and is available" : " and isn't available";
+            System.out.println("This item has id: " + tokens[0] + " and title: " + tokens[1] + availability);
         }
     }
 }

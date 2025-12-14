@@ -74,8 +74,11 @@ public class Menu {
             System.out.println("2. View Items");
             System.out.println("3. Update Item Title");
             System.out.println("4. Delete Item");
-            System.out.println("5. Back to Library Menu");
-            int choice = readInt("Choose an option: ", 1, 5);
+            System.out.println("5. Borrow an Item");
+            System.out.println("6. Return an Item");
+            System.out.println("7. Show borrowed Items");
+            System.out.println("8. Back to Library Menu");
+            int choice = readInt("Choose an option: ", 1, 8);
 
             switch (choice) {
                 case 1:
@@ -120,6 +123,70 @@ public class Menu {
                     break;
 
                 case 5:
+                    if (clients.isEmpty()) {
+                        System.out.println("There are no clients yet !!");
+                        break;
+                    }
+                    String client_id = readString("Enter your ID (client) :");
+                    Client client = findClientById(client_id);
+                    while (client == null) {
+                        client_id = readString("There is no client with this ID, Enter a new ID: ");
+                        client = findClientById(client_id);
+                    }
+                    String item_id = readString("Enter the ID of the item you want to borrow:");
+                    LibraryItem item;
+                    try {
+                        item = library.retrieveItem(item_id);
+                        if (!item.getAvailability()) {
+                            System.out.println("Item isn't available right now !!!");
+                        } else {
+                            client.borrowItem(item);
+                            System.out.println("Item is borrowed successfully");
+                        }
+                    } catch (ItemNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+
+                case 6:
+                    if (clients.isEmpty()) {
+                        System.out.println("There are no clients yet !!");
+                        break;
+                    }
+                    client_id = readString("Enter your ID (client) :");
+                    client = findClientById(client_id);
+                    while (client == null) {
+                        client_id = readString("There is no client with this ID, Enter a new ID: ");
+                        client = findClientById(client_id);
+                    }
+                    item_id = readString("Enter the ID of the item you want to return:");
+                    try {
+                        boolean returned = client.returnItem(item_id);
+                        if (!returned) {
+                            System.out.println("Item isn't available in your booked items !!!");
+                        } else {
+                            System.out.println("Item has been returned successfully");
+                        }
+                    } catch (ItemNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+
+                case 7:
+                    if (clients.isEmpty()) {
+                        System.out.println("There are no clients yet !!");
+                        break;
+                    }
+                    client_id = readString("Enter your ID (client) :");
+                    client = findClientById(client_id);
+                    while (client == null) {
+                        client_id = readString("There is no client with this ID, Enter a new ID: ");
+                        client = findClientById(client_id);
+                    }
+                    client.showBorrowedItems();
+                    break;
+
+                case 8:
                     return;
             }
         }
@@ -152,7 +219,7 @@ public class Menu {
                         System.out.println("No clients found.");
                     } else {
                         for (Client client : clients) {
-                            client.getClientDetails(client.getId());
+                            client.getClientDetails();
                         }
                     }
                     break;
@@ -189,11 +256,7 @@ public class Menu {
     }
 
     private Client findClientById(String id) {
-        for (Client client : clients) {
-            if (client.getId().equals(id))
-                return client;
-        }
-        return null;
+        return clients.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 
     private int readInt(String prompt, int min, int max) {
