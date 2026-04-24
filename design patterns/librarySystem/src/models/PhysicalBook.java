@@ -1,3 +1,5 @@
+package models;
+
 public class PhysicalBook extends Book{
 
     public PhysicalBook(String title) {

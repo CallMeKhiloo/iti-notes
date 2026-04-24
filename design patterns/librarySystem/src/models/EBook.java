@@ -1,3 +1,5 @@
+package models;
+
 public class EBook extends Book{
 
     public EBook(String title) {

@@ -1,3 +1,4 @@
+package models;
 public class Book implements BookInterface{
     private String title;
     private boolean isAvailable;

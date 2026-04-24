@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Book;
+import models.User;
+
 public class LibraryService {
     private static LibraryService instance;
     private List<Book> books = new ArrayList<>();
